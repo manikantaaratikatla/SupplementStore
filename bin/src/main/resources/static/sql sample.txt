@@ -1,0 +1,46 @@
+create database supplementsstore;
+use supplementsstore;
+create table customer (
+    customerid int primary key auto_increment,
+    name varchar(100) not null,
+    email varchar(191) unique not null,
+    password varchar(100) not null,
+    phone varchar(20) not null,
+    address text
+);
+create index idx_phone on customer(phone);
+insert into customer (name, email, password, phone, address)
+values (
+    'prince',
+    'prince@example.com',
+    'password',  
+    '+1234567890',
+    '123 main street, cityville'
+    
+);
+select * from customer;
+select * from customer where email = 'prince@example.com';
+insert into customer (name, email, password, phone, address) values
+
+('arya', 'arya@example.com', 'pass123', '+1111111111', '45 Park Lane, Hyderabad'),
+('john', 'john.doe@example.com', 'doe2025', '+2222222222', '12 Green Ave, Bangalore'),
+('meena', 'meena123@example.com', 'meena@321', '+3333333333', '56 MG Road, Chennai'),
+('rohit', 'rohit.k@example.com', 'rohit@123', '+4444444444', '88 Jubilee Hills, Hyderabad'),
+('lara', 'lara90@example.com', 'lara!pass', '+5555555555', '4 Church Street, Kochi'),
+('steve', 'steve.work@example.com', 'steve@work', '+6666666666', '33 Palm Street, Pune');
+select * from customer;
+use supplementsstore;
+create table items_details (
+    item_id bigint auto_increment primary key,
+    item_name varchar(150) not null,
+    price double not null,
+    weight double,
+    description text,
+    is_avail boolean,
+    avail_quantity int
+);
+insert into items_details (item_name, price, weight, description, is_avail, avail_quantity) values
+('Protein Powder', 1500.00, 1.0, 'High-quality whey protein powder', true, 50),
+('Multivitamin Tablets', 800.00, 0.2, 'Essential vitamins for daily use', true, 100),
+('Omega-3 Capsules', 600.00, 0.1, 'Fish oil-based capsules for heart health', true, 75),
+('Mass Gainer', 1800.00, 2.5, 'For weight and muscle gain', true, 30);
