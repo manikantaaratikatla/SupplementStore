@@ -1,90 +1,90 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="jakarta.tags.core" prefix="c" %>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Register - SupplyStore</title>
+    <meta charset="UTF-8">
+    <title>Register - Supply Store</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #eef2f3;
+            background-color: #f2f3f7;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+            margin: 0;
         }
-        .register-box {
-            background: white;
+        .register-container {
+            background-color: #ffffff;
             padding: 30px;
             border-radius: 10px;
-            width: 350px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
-        h2 {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            width: 400px;
             text-align: center;
-            margin-bottom: 20px;
         }
-        label, input {
-            display: block;
-            width: 100%;
-            margin-bottom: 10px;
+        .register-container h2 {
+            color: #0077cc;
+            margin-bottom: 25px;
         }
-        input {
-            padding: 8px;
+        .register-container input[type="text"],
+        .register-container input[type="email"],
+        .register-container input[type="password"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
             border-radius: 5px;
-            border: 1px solid #ccc;
+            box-sizing: border-box;
         }
-        .btn {
-            background-color: #007bff;
+        .register-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0077cc;
             color: white;
             border: none;
-            padding: 10px;
-            width: 100%;
             border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .error {
-            color: red;
-            margin-bottom: 10px;
-            text-align: center;
+        .register-container button:hover {
+            background-color: #005fa3;
         }
-        .success {
-            color: green;
-            margin-bottom: 10px;
-            text-align: center;
+        .register-container .error-message {
+            color: #e60000;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .register-container .login-link {
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .register-container .login-link a {
+            color: #0077cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .register-container .login-link a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-<div class="register-box">
-    <h2>Register</h2>
-
-    <c:if test="${not empty error}">
-        <div class="error">${error}</div>
-    </c:if>
-
-    <c:if test="${not empty message}">
-        <div class="success">${message}</div>
-    </c:if>
-
-    <form action="/register/save" method="post">
-        <label for="name">Full Name</label>
-        <input type="text" name="name" id="name" required>
-
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required>
-
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password" required>
-
-        <label for="phone">Phone</label>
-        <input type="text" name="phone" id="phone" required>
-
-        <label for="address">Address</label>
-        <input type="text" name="address" id="address" required>
-
-        <button type="submit" class="btn">Register</button>
-    </form>
-</div>
+    <div class="register-container">
+        <h2>Register for Supply Store</h2>
+        <form action="${pageContext.request.contextPath}/register/save" method="post">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="text" name="phone" placeholder="Phone Number" required>
+            <input type="text" name="address" placeholder="Address" required>
+            <button type="submit">Register</button>
+        </form>
+        <c:if test="${not empty error}">
+            <p class="error-message">${error}</p>
+        </c:if>
+        <p class="login-link">Already have an account? <a href="${pageContext.request.contextPath}/login">Login here</a></p>
+    </div>
 </body>
 </html>

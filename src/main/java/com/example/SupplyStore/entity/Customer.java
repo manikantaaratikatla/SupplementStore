@@ -8,30 +8,31 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int customerid;
+    @Column(name = "customerid")
+    private Long customerId;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "name", nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true, length = 191)
+    @Column(name = "email", unique = true, nullable = false)
     private String email;
 
-    @Column(nullable = false, length = 100)
+    @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(nullable = false, length = 20)
+    @Column(name = "phone")
     private String phone;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "address")
     private String address;
 
-    // Getters and Setters
-    public int getCustomerid() {
-        return customerid;
+    // Getters and setters
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomerid(int customerid) {
-        this.customerid = customerid;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
 
     public String getName() {

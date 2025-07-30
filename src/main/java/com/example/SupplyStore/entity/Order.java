@@ -1,22 +1,52 @@
 package com.example.SupplyStore.entity;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderId;
+    private int orderId;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private int customerId;
 
-    private LocalDate orderDate;
+    private LocalDateTime orderDate;
 
-    private Double totalAmount;
+    private double totalAmount;
+
+    public Order() {
+        this.orderDate = LocalDateTime.now();
+    }
 
     // Getters and setters
+    public int getOrderId() {
+        return orderId;
+    }
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public LocalDateTime getOrderDate() {
+        return orderDate;
+    }
+    public void setOrderDate(LocalDateTime orderDate) {
+        this.orderDate = orderDate;
+    }
+
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+    public void setTotalAmount(double totalAmount) {
+        this.totalAmount = totalAmount;
+    }
 }

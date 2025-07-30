@@ -1,44 +1,46 @@
 package com.example.SupplyStore.entity;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "cart_items")
 public class CartItem {
 
-    private Long id;
-    private String name;
-    private double price;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "customer_id")
+    private int customerId;
+
+    @Column(name = "item_id")
+    private int itemId;
+
     private int quantity;
 
-    public CartItem() {}
-
-    public CartItem(Long id, String name, double price, int quantity) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-    }
-
     // Getters and Setters
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public int getCustomerId() {
+        return customerId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
     }
 
-    public double getPrice() {
-        return price;
+    public int getItemId() {
+        return itemId;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setItemId(int itemId) {
+        this.itemId = itemId;
     }
 
     public int getQuantity() {
